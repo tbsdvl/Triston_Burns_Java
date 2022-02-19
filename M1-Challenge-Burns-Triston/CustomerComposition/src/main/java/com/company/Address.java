@@ -1,6 +1,6 @@
 package com.company;
 
-public class Address {
+public class Address extends Customer {
     private String street1;
     private String street2;
     private String city;
@@ -8,14 +8,6 @@ public class Address {
     private int zip;
 
     public Address() { };
-
-//    public Address(String street1, String street2, String city, String state, int zip) {
-//        this.street1 = street1;
-//        this.street2 = street2;
-//        this.city = city;
-//        this.state = state;
-//        this.zip = zip;
-//    }
 
     public String getStreet1() {
         return street1;

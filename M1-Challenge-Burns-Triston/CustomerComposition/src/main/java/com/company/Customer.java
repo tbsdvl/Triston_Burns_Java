@@ -11,6 +11,11 @@ public class Customer {
     private String phoneNumber;
     private boolean member;
 
+    private Address shippingAddress;
+    private Address billingAddress;
+
+    public Customer() { };
+
     public Customer(String firstName, String lastName, String email, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -60,5 +65,21 @@ public class Customer {
 
     public void setMember(boolean member) {
         this.member = member;
+    }
+
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public Address getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(Address shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 }
