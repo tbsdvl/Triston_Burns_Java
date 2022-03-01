@@ -1,10 +1,10 @@
-package com.company.MonthAndMathService;
+package com.company.MathAndMonthService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MonthAndMathServiceApplicationTests {
+class RestWebServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

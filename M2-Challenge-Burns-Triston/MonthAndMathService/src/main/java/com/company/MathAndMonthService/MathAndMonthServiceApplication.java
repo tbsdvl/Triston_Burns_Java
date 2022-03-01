@@ -1,13 +1,13 @@
-package com.company.MonthAndMathService;
+package com.company.MathAndMonthService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MonthAndMathServiceApplication {
+public class MathAndMonthServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MonthAndMathServiceApplication.class, args);
+		SpringApplication.run(MathAndMonthServiceApplication.class, args);
 	}
 
 }
