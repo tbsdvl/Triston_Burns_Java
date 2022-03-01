@@ -5,6 +5,7 @@ import com.company.MathAndMonthService.models.Month;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -45,7 +46,7 @@ public class MathAndMonthServiceController {
     public Month getRandomMonth() {
 
 //        Random month
-        double randomNumber = Math.abs(Math.floor(Math.random() * monthList.size()));
+        double randomNumber = Math.abs(Math.ceil(Math.random() * monthList.size()));
 
 //        Index into monthList with randomNumber (double casts to int)
         return new Month((int) randomNumber, monthList.get((int) (randomNumber - 1)));
@@ -53,7 +54,7 @@ public class MathAndMonthServiceController {
 
     @PostMapping("/add")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public MathSolution getAdditionSolution(@RequestBody MathSolution addition) {
+    public MathSolution getAdditionSolution(@RequestBody @Valid MathSolution addition) {
 
 //        Check if both operand values are equal to zero.
 //        If both values are equal to zero, this indicates the POST method
@@ -82,7 +83,7 @@ public class MathAndMonthServiceController {
 
     @PostMapping("/subtract")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public MathSolution getSubtractSolution(@RequestBody MathSolution subtract) {
+    public MathSolution getSubtractSolution(@RequestBody @Valid MathSolution subtract) {
 
 //        Check if both operand values are equal to zero.
 //        If both values are equal to zero, this indicates the POST method
@@ -111,7 +112,7 @@ public class MathAndMonthServiceController {
 
     @PostMapping("/multiply")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public MathSolution getMultiplicationSolution(@RequestBody MathSolution multiply) {
+    public MathSolution getMultiplicationSolution(@RequestBody @Valid MathSolution multiply) {
 
 //        Check if both operand values are equal to zero.
 //        If both values are equal to zero, this indicates the POST method
@@ -140,7 +141,7 @@ public class MathAndMonthServiceController {
 
     @PostMapping("/divide")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public MathSolution getDivisionSolution(@RequestBody MathSolution divide) {
+    public MathSolution getDivisionSolution(@RequestBody @Valid MathSolution divide) {
 
 //        Check if both operand values are equal to zero.
 //        If both values are equal to zero, this indicates the POST method

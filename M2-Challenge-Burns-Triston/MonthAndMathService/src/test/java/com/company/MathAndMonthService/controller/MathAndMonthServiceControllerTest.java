@@ -12,13 +12,16 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(MathAndMonthServiceController.class)
-public class RestWebServiceControllerTest {
+public class MathAndMonthServiceControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -160,6 +163,26 @@ public class RestWebServiceControllerTest {
     }
 
     @Test
+    public void shouldReturn422StatusWhenCreatingNewAdditionMathSolutionOnPOSTRequest() throws Exception {
+
+        //        Input math solution
+        Map<String, String> inputSolution = new HashMap<>();
+        inputSolution.put("operand1", "Hello");
+        inputSolution.put("operand2", "World!");
+
+//        Input json string
+        String inputJson = mapper.writeValueAsString(inputSolution);
+
+        mockMvc.perform(
+                        post("/add")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
     public void shouldCreateANewSubtractMathSolutionAndReturnDifferenceOfTwoNumbers() throws Exception {
 
 //        Input math solution
@@ -232,6 +255,26 @@ public class RestWebServiceControllerTest {
         //        Input math solution
         MathSolution inputSolution = new MathSolution();
         inputSolution.setOperand2(1);
+
+//        Input json string
+        String inputJson = mapper.writeValueAsString(inputSolution);
+
+        mockMvc.perform(
+                        post("/subtract")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void shouldReturn422StatusWhenCreatingNewSubtractionMathSolutionOnPOSTRequest() throws Exception {
+
+        //        Input math solution
+        Map<String, String> inputSolution = new HashMap<>();
+        inputSolution.put("operand1", "Hello");
+        inputSolution.put("operand2", "World!");
 
 //        Input json string
         String inputJson = mapper.writeValueAsString(inputSolution);
@@ -323,7 +366,27 @@ public class RestWebServiceControllerTest {
         String inputJson = mapper.writeValueAsString(inputSolution);
 
         mockMvc.perform(
-                        post("/subtract")
+                        post("/multiply")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void shouldReturn422StatusWhenCreatingNewMultiplicationMathSolutionOnPOSTRequest() throws Exception {
+
+        //        Input math solution
+        Map<String, String> inputSolution = new HashMap<>();
+        inputSolution.put("operand1", "Hello");
+        inputSolution.put("operand2", "World!");
+
+//        Input json string
+        String inputJson = mapper.writeValueAsString(inputSolution);
+
+        mockMvc.perform(
+                        post("/multiply")
                                 .content(inputJson)
                                 .contentType(MediaType.APPLICATION_JSON)
                 )
@@ -404,6 +467,26 @@ public class RestWebServiceControllerTest {
         //        Input math solution
         MathSolution inputSolution = new MathSolution();
         inputSolution.setOperand2(1);
+
+//        Input json string
+        String inputJson = mapper.writeValueAsString(inputSolution);
+
+        mockMvc.perform(
+                        post("/divide")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
+
+    @Test
+    public void shouldReturn422StatusWhenCreatingNewDivisionMathSolutionOnPOSTRequest() throws Exception {
+
+        //        Input math solution
+        Map<String, String> inputSolution = new HashMap<>();
+        inputSolution.put("operand1", "Hello");
+        inputSolution.put("operand2", "World!");
 
 //        Input json string
         String inputJson = mapper.writeValueAsString(inputSolution);
