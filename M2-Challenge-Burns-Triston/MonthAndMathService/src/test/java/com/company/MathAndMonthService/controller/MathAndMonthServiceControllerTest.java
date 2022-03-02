@@ -505,7 +505,7 @@ public class MathAndMonthServiceControllerTest {
 
         //        Input math solution
         MathSolution inputSolution = new MathSolution();
-        inputSolution.setOperand2(1);
+        inputSolution.setOperand1(1);
         inputSolution.setOperand2(0);
 
 //        Input json string
@@ -519,25 +519,4 @@ public class MathAndMonthServiceControllerTest {
                 .andDo(print())
                 .andExpect(status().isUnprocessableEntity());
     }
-
-    @Test
-    public void shouldReturn422StatusWhenCreatingNewDivisionMathSolutionWithZeroDivisionNumerator() throws Exception {
-
-        //        Input math solution
-        MathSolution inputSolution = new MathSolution();
-        inputSolution.setOperand2(0);
-        inputSolution.setOperand2(1);
-
-//        Input json string
-        String inputJson = mapper.writeValueAsString(inputSolution);
-
-        mockMvc.perform(
-                        post("/divide")
-                                .content(inputJson)
-                                .contentType(MediaType.APPLICATION_JSON)
-                )
-                .andDo(print())
-                .andExpect(status().isUnprocessableEntity());
-    }
-
 }
